@@ -135,13 +135,15 @@ class ExpandedList extends StatelessWidget {
                       notification.title == "The latest communications!"
                           ? launchUrl(Uri.parse(
                               "https://www.medpluspr.com/comunicadosmedlink"))
-                          : notification.title == "Las comunicaciones más recientes!"
+                          : notification.title ==
+                                  "Las comunicaciones más recientes!"
                               ? launchUrl(Uri.parse(
                                   "https://www.medpluspr.com/medlinknews"))
                               : showDialog(
                                   context: context,
                                   builder: ((BuildContext context) {
                                     return AlertDialog(
+                                      iconPadding: EdgeInsets.zero,
                                       //alignment: Alignment.center,
                                       icon: Column(
                                         mainAxisAlignment:
