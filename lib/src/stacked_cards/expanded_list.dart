@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -100,6 +101,19 @@ class ExpandedList extends StatelessWidget {
         .value;
   }
 
+  bool isImageURL(String url) {
+    return (url.endsWith('jpg') || url.endsWith('jpeg') || url.endsWith('png'));
+  }
+
+  bool isStringAnURL(String url) {
+    try {
+      bool _validURL = Uri.parse(url).isAbsolute;
+      return _validURL;
+    } catch (e) {
+      return false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final reversedList = List.of(notificationCards);
@@ -113,6 +127,8 @@ class ExpandedList extends StatelessWidget {
             ...reversedList.map(
               (notification) {
                 final index = reversedList.indexOf(notification);
+                bool isImage = isImageURL(notification.subtitle);
+                bool isURL = isStringAnURL(notification.subtitle);
                 return BuildWithAnimation(
                   key: ValueKey(notification.date),
                   // slidKey: ValueKey(notification.dateTime),
@@ -167,7 +183,34 @@ class ExpandedList extends StatelessWidget {
                                           .selectedItemColor,
                                       title: Text(notification.title),
                                       content: SingleChildScrollView(
-                                          child: Text(notification.subtitle)),
+                                          child: isImage == true
+                                              ? Image(
+                                                  image:
+                                                      CachedNetworkImageProvider(
+                                                          notification
+                                                              .subtitle),
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.3,
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height *
+                                                      0.2,
+                                                )
+                                              : isURL == true
+                                                  ? InkWell(
+                                                      child: Text(
+                                                        notification.subtitle,
+                                                        style: TextStyle(
+                                                            color: Colors.blue),
+                                                      ),
+                                                      onTap: () => launchUrl(
+                                                          Uri.parse(notification
+                                                              .subtitle)),
+                                                    )
+                                                  : Text(
+                                                      notification.subtitle)),
                                     );
                                   }));
                     },

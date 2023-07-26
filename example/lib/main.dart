@@ -43,7 +43,8 @@ class _MyHomePageState extends State<MyHomePage> {
         size: 48,
       ),
       title: 'OakTree 2',
-      subtitle: 'We believe in the power of mobile computing.',
+      subtitle:
+          "https://www.kasandbox.org/programming-images/avatars/spunky-sam.png",
     ),
     NotificationCard(
       date: DateTime.now().subtract(
@@ -54,7 +55,8 @@ class _MyHomePageState extends State<MyHomePage> {
         size: 48,
       ),
       title: 'OakTree 3',
-      subtitle: 'We believe in the power of mobile computing.',
+      subtitle:
+          'https://stackoverflow.com/questions/43583411/how-to-create-a-hyperlink-in-flutter-widget',
     ),
     NotificationCard(
       date: DateTime.now().subtract(
