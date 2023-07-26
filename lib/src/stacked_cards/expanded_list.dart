@@ -102,7 +102,13 @@ class ExpandedList extends StatelessWidget {
   }
 
   bool isImageURL(String url) {
-    return (url.endsWith('jpg') || url.endsWith('jpeg') || url.endsWith('png'));
+    return (url.endsWith('jpg') ||
+        url.endsWith('jpeg') ||
+        url.endsWith('png') ||
+        url.endsWith('webp') ||
+        url.endsWith('avif') ||
+        url.endsWith('gif') ||
+        url.endsWith('svg'));
   }
 
   bool isStringAnURL(String url) {
