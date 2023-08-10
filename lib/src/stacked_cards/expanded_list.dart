@@ -111,14 +111,15 @@ class _ExpandedListState extends State<ExpandedList> {
   String? url;
   bool isImageURL(String url) {
     var link = extractURL(url);
+    print(link);
     if (link != null) {
-      return (url.endsWith('jpg') ||
-          url.endsWith('jpeg') ||
-          url.endsWith('png') ||
-          url.endsWith('webp') ||
-          url.endsWith('avif') ||
-          url.endsWith('gif') ||
-          url.endsWith('svg'));
+      return (link.endsWith('jpg') ||
+          link.endsWith('jpeg') ||
+          link.endsWith('png') ||
+          link.endsWith('webp') ||
+          link.endsWith('avif') ||
+          link.endsWith('gif') ||
+          link.endsWith('svg'));
     } else {
       return false;
     }
@@ -139,13 +140,20 @@ class _ExpandedListState extends State<ExpandedList> {
   }
 
   String? extractURL(String text) {
-    var list = linkify(text);
+    RegExp exp = RegExp(r"<[^>]*>", multiLine: true, caseSensitive: true);
+    String parsedstring1 = text.replaceAll(exp, ' ');
+
+    var list = linkify(parsedstring1);
     for (var i in list) {
       if (i.runtimeType == UrlElement) {
         // setState(() {
         //   url = i.text;
         // });
-        print("objecttttttttttttttttttttttttttttt: ${i.originText}");
+        print(i);
+        print("---------------------------");
+        print(i.originText);
+        print("https://${i.text}");
+        print("----------------------");
         return i.originText;
       }
       //   return null;
@@ -161,7 +169,7 @@ class _ExpandedListState extends State<ExpandedList> {
         // setState(() {
         //   url = i.text;
         // });
-        print("objecttttttttttttttttttttttttttttt: ${i.originText}");
+        //  print("objecttttttttttttttttttttttttttttt: ${i}");
         return i.originText;
       }
       //   return null;
@@ -191,7 +199,10 @@ class _ExpandedListState extends State<ExpandedList> {
               (notification) {
                 final index = reversedList.indexOf(notification);
                 bool isImage = isImageURL(notification.subtitle);
+                print("${notification.subtitle} yes/no img: ${isImage}");
                 bool isURL = isStringAnURL(notification.subtitle);
+                print("${notification.subtitle} yes/no url: ${isURL}");
+
                 return BuildWithAnimation(
                   key: ValueKey(notification.date),
                   // slidKey: ValueKey(notification.dateTime),

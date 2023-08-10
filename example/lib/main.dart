@@ -71,7 +71,18 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       title: 'OakTree 3',
       subtitle:
-          'hi all it is nooo https://stackoverflow.com/questions/43583411/how-to-create-a-hyperlink-in-flutter-widget',
+          'hi all it is nooo https://sample-videos.com/img/Sample-png-image-1mb.png</p>',
+    ),
+    NotificationCard(
+      date: DateTime.now().subtract(
+        const Duration(minutes: 10),
+      ),
+      leading: Icon(
+        Icons.account_circle,
+        size: 48,
+      ),
+      title: 'OakTree 8',
+      subtitle: 'test  https://dev.knostos.com/dashboard</p>',
     ),
     NotificationCard(
       date: DateTime.now().subtract(
