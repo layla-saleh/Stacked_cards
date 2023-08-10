@@ -321,15 +321,14 @@ class _ExpandedListState extends State<ExpandedList> {
                                                             ),
                                                       InkWell(
                                                         child: Text(
-                                                          notification.subtitle,
+                                                          extractURL(
+                                                              notification
+                                                                  .subtitle)!,
                                                           style: TextStyle(
                                                               color:
                                                                   Colors.blue),
                                                         ),
                                                         onTap: () {
-                                                          print(extractURL(
-                                                              notification
-                                                                  .subtitle));
                                                           launchUrl(Uri.parse(
                                                               extractURL(
                                                                   notification

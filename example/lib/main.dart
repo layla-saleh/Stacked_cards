@@ -26,13 +26,16 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   List<NotificationCard> _listOfNotification = [
     NotificationCard(
-      date: DateTime.now(),
+      date: DateTime.now().subtract(
+        const Duration(minutes: 4),
+      ),
       leading: Icon(
         Icons.account_circle,
         size: 48,
       ),
-      title: 'OakTree 1',
-      subtitle: 'We believe in the power of mobile computing.',
+      title: 'text with image link',
+      subtitle:
+          "Hi its my testing <b>Laila</b> https://www.kasandbox.org/programming-images/avatars/spunky-sam.png",
     ),
     NotificationCard(
       date: DateTime.now().subtract(
@@ -56,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       title: 'text with image link',
       subtitle:
-          "Hi its my testing <b>Laila</b> uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu https://www.kasandbox.org/programming-images/avatars/spunky-sam.png",
+          "Hi its my testing <b>Laila</b> https://www.kasandbox.org/programming-images/avatars/spunky-sam.png",
     ),
     NotificationCard(
       date: DateTime.now().subtract(
@@ -68,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       title: 'OakTree 3',
       subtitle:
-          'https://stackoverflow.com/questions/43583411/how-to-create-a-hyperlink-in-flutter-widget',
+          'hi all it is nooo https://stackoverflow.com/questions/43583411/how-to-create-a-hyperlink-in-flutter-widget',
     ),
     NotificationCard(
       date: DateTime.now().subtract(
@@ -91,6 +94,18 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       title: 'OakTree 5',
       subtitle: 'We believe in the power of mobile computing.',
+    ),
+    NotificationCard(
+      date: DateTime.now().subtract(
+        const Duration(minutes: 4),
+      ),
+      leading: Icon(
+        Icons.account_circle,
+        size: 48,
+      ),
+      title: 'text with image link',
+      subtitle:
+          "Hi its my testing <b>Laila</b> https://www.kasandbox.org/programming-images/avatars/spunky-sam.png",
     ),
   ];
 

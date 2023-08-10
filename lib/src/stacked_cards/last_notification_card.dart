@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 
@@ -113,11 +114,18 @@ class LastNotificationCard extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: titleTextStyle,
                     ),
-                    subtitle: Text(
-                      notification.subtitle,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: subtitleTextStyle,
+                    subtitle: SingleChildScrollView(
+                      child: Container(
+                        height: MediaQuery.of(context).size.height * 0.06,
+                        child: Html(
+                          data: notification.subtitle,
+
+                          // notification.subtitle,
+                          // maxLines: 2,
+                          // overflow: TextOverflow.ellipsis,
+                          // style: subtitleTextStyle,
+                        ),
+                      ),
                     ),
                   ),
                 ),
