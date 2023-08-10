@@ -42,9 +42,21 @@ class _MyHomePageState extends State<MyHomePage> {
         Icons.account_circle,
         size: 48,
       ),
-      title: 'OakTree 2',
+      title: 'image link',
       subtitle:
           "https://www.kasandbox.org/programming-images/avatars/spunky-sam.png",
+    ),
+    NotificationCard(
+      date: DateTime.now().subtract(
+        const Duration(minutes: 4),
+      ),
+      leading: Icon(
+        Icons.account_circle,
+        size: 48,
+      ),
+      title: 'text with image link',
+      subtitle:
+          "Hi its my testing <b>Laila</b> uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu https://www.kasandbox.org/programming-images/avatars/spunky-sam.png",
     ),
     NotificationCard(
       date: DateTime.now().subtract(

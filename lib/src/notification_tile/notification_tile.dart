@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:intl/intl.dart';
 
 import '../constants.dart';
@@ -118,11 +119,16 @@ class NotificationTile extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: titleTextStyle,
             ),
-            subtitle: Text(
-              subtitle,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: subtitleTextStyle,
+            subtitle: SingleChildScrollView(
+              child: Container(
+                height: MediaQuery.of(context).size.height*0.07,
+                child: Html(
+                  data: subtitle,
+                  // maxLines: 2,
+                  // overflow: TextOverflow.ellipsis,
+                  // style: subtitleTextStyle,
+                ),
+              ),
             ),
           ),
         ],

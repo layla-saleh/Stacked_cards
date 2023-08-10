@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:linkify/linkify.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../model/notification_card.dart';
 import '../notification_tile/notification_tile.dart';
@@ -10,7 +12,7 @@ typedef void OnTapSlidButtonCallback(int index);
 
 /// This widget is shown after animating [AnimatedOffsetList].
 /// Show all cards in a column, with the option to slide each card.
-class ExpandedList extends StatelessWidget {
+class ExpandedList extends StatefulWidget {
   final List<NotificationCard> notificationCards;
   final AnimationController controller;
   final double initialSpacing;
@@ -50,6 +52,11 @@ class ExpandedList extends StatelessWidget {
     required this.endPadding,
   }) : super(key: key);
 
+  @override
+  State<ExpandedList> createState() => _ExpandedListState();
+}
+
+class _ExpandedListState extends State<ExpandedList> {
   /// Determines whether to show the [ExpandedList] or not
   /// When [AnimatedOffsetList] is shown this widget will not be shown.
   /// When there is only one notification then [ExpandedList] will
@@ -57,7 +64,7 @@ class ExpandedList extends StatelessWidget {
   bool _getListVisibility(int length) {
     if (length == 1) {
       return true;
-    } else if (controller.value >= 0.8) {
+    } else if (widget.controller.value >= 0.8) {
       return true;
     } else {
       return false;
@@ -67,8 +74,8 @@ class ExpandedList extends StatelessWidget {
   /// The padding that will be shown at the bottom of
   /// all card, basically bottom padding of [ExpandedList]
   double _getEndPadding(int index) {
-    if (index == notificationCards.length - 1) {
-      return endPadding;
+    if (index == widget.notificationCards.length - 1) {
+      return widget.endPadding;
     } else {
       return 0;
     }
@@ -90,39 +97,89 @@ class ExpandedList extends StatelessWidget {
   /// give bounce animation when cards are expanding.
   double _topPadding(int index) {
     return Tween<double>(
-            begin: _getSpacing(index, initialSpacing),
-            end: _getSpacing(index, spacing))
+            begin: _getSpacing(index, widget.initialSpacing),
+            end: _getSpacing(index, widget.spacing))
         .animate(
           CurvedAnimation(
-            parent: controller,
+            parent: widget.controller,
             curve: Interval(0.8, 1.0),
           ),
         )
         .value;
   }
 
+  String? url;
   bool isImageURL(String url) {
-    return (url.endsWith('jpg') ||
-        url.endsWith('jpeg') ||
-        url.endsWith('png') ||
-        url.endsWith('webp') ||
-        url.endsWith('avif') ||
-        url.endsWith('gif') ||
-        url.endsWith('svg'));
-  }
-
-  bool isStringAnURL(String url) {
-    try {
-      bool _validURL = Uri.parse(url).isAbsolute;
-      return _validURL;
-    } catch (e) {
+    var link = extractURL(url);
+    if (link != null) {
+      return (url.endsWith('jpg') ||
+          url.endsWith('jpeg') ||
+          url.endsWith('png') ||
+          url.endsWith('webp') ||
+          url.endsWith('avif') ||
+          url.endsWith('gif') ||
+          url.endsWith('svg'));
+    } else {
       return false;
     }
   }
 
+  bool isStringAnURL(String url) {
+    var link = extractURL(url);
+    if (link != null) {
+      try {
+        bool _validURL = Uri.parse(link).isAbsolute;
+        return _validURL;
+      } catch (e) {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
+  String? extractURL(String text) {
+    var list = linkify(text);
+    for (var i in list) {
+      if (i.runtimeType == UrlElement) {
+        // setState(() {
+        //   url = i.text;
+        // });
+        print("objecttttttttttttttttttttttttttttt: ${i.originText}");
+        return i.originText;
+      }
+      //   return null;
+    }
+    return null;
+    // print(url);
+  }
+
+  String? extractText(String text) {
+    var list = linkify(text);
+    for (var i in list) {
+      if (i.runtimeType == TextElement) {
+        // setState(() {
+        //   url = i.text;
+        // });
+        print("objecttttttttttttttttttttttttttttt: ${i.originText}");
+        return i.originText;
+      }
+      //   return null;
+    }
+    return null;
+    // print(url);
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    extractURL("subscribe my channel: https://www.youtube.com");
+  }
+
   @override
   Widget build(BuildContext context) {
-    final reversedList = List.of(notificationCards);
+    final reversedList = List.of(widget.notificationCards);
     reversedList.sort((a, b) => b.date.compareTo(a.date));
     return Visibility(
       visible: _getListVisibility(reversedList.length),
@@ -138,19 +195,19 @@ class ExpandedList extends StatelessWidget {
                 return BuildWithAnimation(
                   key: ValueKey(notification.date),
                   // slidKey: ValueKey(notification.dateTime),
-                  onTapView: onTapViewCallback,
-                  view: view,
-                  clear: clear,
-                  containerHeight: containerHeight,
-                  cornerRadius: cornerRadius,
-                  onTapClear: onTapClearCallback,
+                  onTapView: widget.onTapViewCallback,
+                  view: widget.view,
+                  clear: widget.clear,
+                  containerHeight: widget.containerHeight,
+                  cornerRadius: widget.cornerRadius,
+                  onTapClear: widget.onTapClearCallback,
                   // spacing: _getSpacing(index, spacing),
                   spacing: 5,
-                  boxShadow: boxShadow,
+                  boxShadow: widget.boxShadow,
                   index: index,
-                  tileColor: tileColor,
+                  tileColor: widget.tileColor,
                   endPadding: _getEndPadding(index),
-                  tilePadding: tilePadding,
+                  tilePadding: widget.tilePadding,
                   title: notification.title,
                   child: GestureDetector(
                     onTap: () {
@@ -189,54 +246,141 @@ class ExpandedList extends StatelessWidget {
                                           .selectedItemColor,
                                       title: Text(notification.title),
                                       content: SingleChildScrollView(
-                                          child: isImage == true
-                                              ? Image(
-                                                  image:
-                                                      CachedNetworkImageProvider(
-                                                          notification
-                                                              .subtitle),
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.3,
-                                                  height: MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      0.2,
-                                                )
-                                              : isURL == true
-                                                  ? InkWell(
-                                                      child: Text(
-                                                        notification.subtitle,
-                                                        style: TextStyle(
-                                                            color: Colors.blue),
+                                        child: isImage == true
+                                            ? Column(
+                                                children: [
+                                                  extractText(notification
+                                                              .subtitle) ==
+                                                          null
+                                                      ? SizedBox()
+                                                      : SingleChildScrollView(
+                                                          child: Container(
+                                                            width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width *
+                                                                0.8,
+                                                            height: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .height *
+                                                                0.1,
+                                                            child: Html(
+                                                              data: extractText(
+                                                                      notification
+                                                                          .subtitle) ??
+                                                                  "",
+                                                            ),
+                                                          ),
+                                                        ),
+                                                  Image(
+                                                    image:
+                                                        CachedNetworkImageProvider(
+                                                            extractURL(
+                                                                notification
+                                                                    .subtitle)!),
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.3,
+                                                    height:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.2,
+                                                  ),
+                                                ],
+                                              )
+                                            : isURL == true
+                                                ? Column(
+                                                    children: [
+                                                      extractText(notification
+                                                                  .subtitle) ==
+                                                              null
+                                                          ? SizedBox()
+                                                          : SingleChildScrollView(
+                                                              child: Container(
+                                                                width: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .width *
+                                                                    0.8,
+                                                                height: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .height *
+                                                                    0.1,
+                                                                child: Html(
+                                                                  data: extractText(
+                                                                          notification
+                                                                              .subtitle) ??
+                                                                      "",
+                                                                ),
+                                                              ),
+                                                            ),
+                                                      InkWell(
+                                                        child: Text(
+                                                          notification.subtitle,
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.blue),
+                                                        ),
+                                                        onTap: () {
+                                                          print(extractURL(
+                                                              notification
+                                                                  .subtitle));
+                                                          launchUrl(Uri.parse(
+                                                              extractURL(
+                                                                  notification
+                                                                      .subtitle)!));
+                                                        },
                                                       ),
-                                                      onTap: () => launchUrl(
-                                                          Uri.parse(notification
-                                                              .subtitle)),
-                                                    )
-                                                  : Text(
-                                                      notification.subtitle)),
+                                                    ],
+                                                  )
+                                                :
+                                                // Html(
+                                                //     data: notification.subtitle,
+                                                //   )
+                                                SingleChildScrollView(
+                                                    child: Container(
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width *
+                                                              0.8,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height *
+                                                              0.1,
+                                                      child: Html(
+                                                        data: notification
+                                                            .subtitle,
+                                                      ),
+                                                    ),
+                                                  ),
+                                      ),
                                     );
                                   }));
                     },
                     child: NotificationTile(
-                      cardTitle: notificationCardTitle,
+                      cardTitle: widget.notificationCardTitle,
                       date: notification.date,
                       title: notification.title,
                       subtitle: notification.subtitle,
-                      spacing: spacing,
-                      height: containerHeight,
-                      color: tileColor,
-                      cornerRadius: cornerRadius,
-                      titleTextStyle: titleTextStyle,
-                      subtitleTextStyle: subtitleTextStyle,
-                      boxShadow: boxShadow,
+                      spacing: widget.spacing,
+                      height: widget.containerHeight,
+                      color: widget.tileColor,
+                      cornerRadius: widget.cornerRadius,
+                      titleTextStyle: widget.titleTextStyle,
+                      subtitleTextStyle: widget.subtitleTextStyle,
+                      boxShadow: widget.boxShadow,
                       icon: notification.leading,
                       padding: EdgeInsets.fromLTRB(
-                        tilePadding,
+                        widget.tilePadding,
                         _topPadding(index),
-                        tilePadding,
+                        widget.tilePadding,
                         _getEndPadding(index),
                       ),
                     ),
