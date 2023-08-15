@@ -111,7 +111,7 @@ class _ExpandedListState extends State<ExpandedList> {
   String? url;
   bool isImageURL(String url) {
     var link = extractURL(url);
-    print(link);
+
     if (link != null) {
       return (link.endsWith('jpg') ||
           link.endsWith('jpeg') ||
@@ -146,43 +146,20 @@ class _ExpandedListState extends State<ExpandedList> {
     var list = linkify(parsedstring1);
     for (var i in list) {
       if (i.runtimeType == UrlElement) {
-        // setState(() {
-        //   url = i.text;
-        // });
-        print(i);
-        print("---------------------------");
-        print(i.originText);
-        print("https://${i.text}");
-        print("----------------------");
         return i.originText;
       }
-      //   return null;
     }
     return null;
-    // print(url);
   }
 
   String? extractText(String text) {
     var list = linkify(text);
     for (var i in list) {
       if (i.runtimeType == TextElement) {
-        // setState(() {
-        //   url = i.text;
-        // });
-        //  print("objecttttttttttttttttttttttttttttt: ${i}");
         return i.originText;
       }
-      //   return null;
     }
     return null;
-    // print(url);
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    extractURL("subscribe my channel: https://www.youtube.com");
   }
 
   @override
@@ -199,9 +176,7 @@ class _ExpandedListState extends State<ExpandedList> {
               (notification) {
                 final index = reversedList.indexOf(notification);
                 bool isImage = isImageURL(notification.subtitle);
-                print("${notification.subtitle} yes/no img: ${isImage}");
                 bool isURL = isStringAnURL(notification.subtitle);
-                print("${notification.subtitle} yes/no url: ${isURL}");
 
                 return BuildWithAnimation(
                   key: ValueKey(notification.date),
@@ -348,11 +323,7 @@ class _ExpandedListState extends State<ExpandedList> {
                                                       ),
                                                     ],
                                                   )
-                                                :
-                                                // Html(
-                                                //     data: notification.subtitle,
-                                                //   )
-                                                SingleChildScrollView(
+                                                : SingleChildScrollView(
                                                     child: Container(
                                                       width:
                                                           MediaQuery.of(context)
