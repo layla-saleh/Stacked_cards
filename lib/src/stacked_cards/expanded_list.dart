@@ -119,6 +119,12 @@ class _ExpandedListState extends State<ExpandedList> {
           link.endsWith('webp') ||
           link.endsWith('avif') ||
           link.endsWith('gif') ||
+          link.endsWith('tiff') ||
+          link.endsWith('psd') ||
+          link.endsWith('raw') ||
+          link.endsWith('bmp') ||
+          link.endsWith('heif') ||
+          link.endsWith('pdf') ||
           link.endsWith('svg'));
     } else {
       return false;
@@ -239,18 +245,19 @@ class _ExpandedListState extends State<ExpandedList> {
                                                               .subtitle) ==
                                                           null
                                                       ? SizedBox()
-                                                      : SingleChildScrollView(
-                                                          child: Container(
-                                                            width: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .width *
-                                                                0.8,
-                                                            height: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .height *
-                                                                0.1,
+                                                      : Container(
+                                                          width: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
+                                                              0.8,
+                                                          height: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .height *
+                                                              0.1,
+                                                          child:
+                                                              SingleChildScrollView(
                                                             child: Html(
                                                               data: extractText(
                                                                       notification
@@ -281,38 +288,51 @@ class _ExpandedListState extends State<ExpandedList> {
                                             : isURL == true
                                                 ? Column(
                                                     children: [
-                                                      extractText(notification
-                                                                  .subtitle) ==
-                                                              null
-                                                          ? SizedBox()
-                                                          : SingleChildScrollView(
-                                                              child: Container(
-                                                                width: MediaQuery.of(
-                                                                            context)
-                                                                        .size
-                                                                        .width *
-                                                                    0.8,
-                                                                height: MediaQuery.of(
-                                                                            context)
-                                                                        .size
-                                                                        .height *
-                                                                    0.1,
-                                                                child: Html(
-                                                                  data: extractText(
-                                                                          notification
-                                                                              .subtitle) ??
-                                                                      "",
-                                                                ),
-                                                              ),
-                                                            ),
+                                                      // extractText(notification
+                                                      //             .subtitle) ==
+                                                      //         null
+                                                      //     ? SizedBox()
+                                                      //     :
+                                                      // Container(
+                                                      //   width: MediaQuery.of(
+                                                      //               context)
+                                                      //           .size
+                                                      //           .width *
+                                                      //       0.8,
+                                                      //   height: MediaQuery.of(
+                                                      //               context)
+                                                      //           .size
+                                                      //           .height *
+                                                      //       0.1,
+                                                      //   child:
+                                                      //       SingleChildScrollView(
+                                                      //     child: Html(
+                                                      //       data: extractText(
+                                                      //               notification
+                                                      //                   .subtitle) ??
+                                                      //           "",
+                                                      //     ),
+                                                      //   ),
+                                                      // ),
                                                       InkWell(
-                                                        child: Text(
-                                                          extractURL(
-                                                              notification
-                                                                  .subtitle)!,
-                                                          style: TextStyle(
-                                                              color:
-                                                                  Colors.blue),
+                                                        child: Container(
+                                                          width: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
+                                                              0.8,
+                                                          height: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .height *
+                                                              0.1,
+                                                          child:
+                                                              SingleChildScrollView(
+                                                            child: Html(
+                                                              data: notification
+                                                                  .subtitle,
+                                                            ),
+                                                          ),
                                                         ),
                                                         onTap: () {
                                                           launchUrl(Uri.parse(
@@ -323,18 +343,19 @@ class _ExpandedListState extends State<ExpandedList> {
                                                       ),
                                                     ],
                                                   )
-                                                : SingleChildScrollView(
-                                                    child: Container(
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              0.8,
-                                                      height:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .height *
-                                                              0.1,
+                                                : Container(
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.8,
+                                                    height:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.1,
+                                                    child:
+                                                        SingleChildScrollView(
                                                       child: Html(
                                                         data: notification
                                                             .subtitle,

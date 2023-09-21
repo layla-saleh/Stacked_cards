@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       title: 'text with image link',
       subtitle:
-          "Hi its my testing <b>Laila</b> https://www.kasandbox.org/programming-images/avatars/spunky-sam.png",
+          "Hi its my testing <b>Laila</b> <b>https://www.kasandbox.org/programming-images/avatars/spunky-sam.png</b>",
     ),
     NotificationCard(
       date: DateTime.now().subtract(
@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
         size: 48,
       ),
       title: 'OakTree 8',
-      subtitle: 'test  https://dev.knostos.com/dashboard</p>',
+      subtitle: 'test <b>https://dev.knostos.com/dashboard</b>',
     ),
     NotificationCard(
       date: DateTime.now().subtract(
@@ -93,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
         size: 48,
       ),
       title: 'OakTree 4',
-      subtitle: 'We believe in the power of mobile computing.',
+      subtitle: 'We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.',
     ),
     NotificationCard(
       date: DateTime.now().subtract(
@@ -104,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
         size: 48,
       ),
       title: 'OakTree 5',
-      subtitle: 'We believe in the power of mobile computing.',
+      subtitle: 'We believe in the power of mobile computing.\n\n\n\n\n https://upload.wikimedia.org',
     ),
     NotificationCard(
       date: DateTime.now().subtract(
