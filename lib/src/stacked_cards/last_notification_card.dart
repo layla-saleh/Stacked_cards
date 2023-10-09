@@ -119,7 +119,11 @@ class LastNotificationCard extends StatelessWidget {
                         height: MediaQuery.of(context).size.height * 0.06,
                         child: Html(
                           data: notification.subtitle,
-
+                          style: {
+                            "*": Style(
+                                textOverflow: TextOverflow.ellipsis,
+                                maxLines: 2),
+                          },
                           // notification.subtitle,
                           // maxLines: 2,
                           // overflow: TextOverflow.ellipsis,

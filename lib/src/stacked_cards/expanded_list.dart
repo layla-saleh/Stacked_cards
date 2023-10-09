@@ -256,13 +256,17 @@ class _ExpandedListState extends State<ExpandedList> {
                                                                   .size
                                                                   .height *
                                                               0.1,
-                                                          child:
-                                                              SingleChildScrollView(
-                                                            child: Html(
-                                                              data: extractText(
-                                                                      notification
-                                                                          .subtitle) ??
-                                                                  "",
+                                                          child: Scrollbar(
+                                                            thumbVisibility:
+                                                                true,
+                                                            child:
+                                                                SingleChildScrollView(
+                                                              child: Html(
+                                                                data: extractText(
+                                                                        notification
+                                                                            .subtitle) ??
+                                                                    "",
+                                                              ),
                                                             ),
                                                           ),
                                                         ),
@@ -326,11 +330,15 @@ class _ExpandedListState extends State<ExpandedList> {
                                                                   .size
                                                                   .height *
                                                               0.1,
-                                                          child:
-                                                              SingleChildScrollView(
-                                                            child: Html(
-                                                              data: notification
-                                                                  .subtitle,
+                                                          child: Scrollbar(
+                                                            thumbVisibility:
+                                                                true,
+                                                            child:
+                                                                SingleChildScrollView(
+                                                              child: Html(
+                                                                data: notification
+                                                                    .subtitle,
+                                                              ),
                                                             ),
                                                           ),
                                                         ),
@@ -354,11 +362,14 @@ class _ExpandedListState extends State<ExpandedList> {
                                                                 .size
                                                                 .height *
                                                             0.1,
-                                                    child:
-                                                        SingleChildScrollView(
-                                                      child: Html(
-                                                        data: notification
-                                                            .subtitle,
+                                                    child: Scrollbar(
+                                                      thumbVisibility: true,
+                                                      child:
+                                                          SingleChildScrollView(
+                                                        child: Html(
+                                                          data: notification
+                                                              .subtitle,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),

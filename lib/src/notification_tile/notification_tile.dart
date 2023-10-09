@@ -121,9 +121,13 @@ class NotificationTile extends StatelessWidget {
             ),
             subtitle: SingleChildScrollView(
               child: Container(
-                height: MediaQuery.of(context).size.height*0.06,
+                height: MediaQuery.of(context).size.height * 0.06,
                 child: Html(
                   data: subtitle,
+                  style: {
+                    "*":
+                        Style(textOverflow: TextOverflow.ellipsis, maxLines: 2),
+                  },
                   // maxLines: 2,
                   // overflow: TextOverflow.ellipsis,
                   // style: subtitleTextStyle,
