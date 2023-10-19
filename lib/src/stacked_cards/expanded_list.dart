@@ -270,23 +270,8 @@ class _ExpandedListState extends State<ExpandedList> {
                                                             ),
                                                           ),
                                                         ),
-                                                  Image(
-                                                    image:
-                                                        CachedNetworkImageProvider(
-                                                            extractURL(
-                                                                notification
-                                                                    .subtitle)!),
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            0.3,
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height *
-                                                            0.2,
-                                                  ),
+                                                  imageValue(
+                                                      notification, context),
                                                 ],
                                               )
                                             : isURL == true
@@ -405,6 +390,29 @@ class _ExpandedListState extends State<ExpandedList> {
         ),
       ),
     );
+  }
+
+  Widget imageValue(NotificationCard notification, BuildContext context) {
+    try {
+      return Image(
+        image: CachedNetworkImageProvider(extractURL(notification.subtitle)!),
+        width: MediaQuery.of(context).size.width * 0.3,
+        height: MediaQuery.of(context).size.height * 0.2,
+        errorBuilder:
+            (BuildContext context, Object exception, StackTrace? stackTrace) {
+          return InkWell(
+            child: Text(
+              extractURL(notification.subtitle)!,
+              style: TextStyle(color: Colors.blue),
+            ),
+            onTap: () {
+              launchUrl(Uri.parse(extractURL(notification.subtitle)!));
+            },
+          );
+        },
+      );
+    } catch (e) {}
+    return Container();
   }
 }
 

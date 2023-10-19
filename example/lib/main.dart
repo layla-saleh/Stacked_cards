@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
         size: 48,
       ),
       title: 'OakTree 8',
-      subtitle: 'test <b>https://dev.knostos.com/dashboard</b>',
+      subtitle: 'test <b>https://en.wikipedia.org/wiki/Cat#/media/File:Cat_August_2010-4.jpg</b>',
     ),
     NotificationCard(
       date: DateTime.now().subtract(
