@@ -26,98 +26,102 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   List<NotificationCard> _listOfNotification = [
     NotificationCard(
-      date: DateTime.now().subtract(
-        const Duration(minutes: 4),
-      ),
-      leading: Icon(
-        Icons.account_circle,
-        size: 48,
-      ),
-      title: 'text with image link',
-      subtitle:
-          "Hi its my testing <b>Laila</b> <b>https://www.kasandbox.org/programming-images/avatars/spunky-sam.png</b>",
-    ),
+        date: DateTime.now().subtract(
+          const Duration(minutes: 4),
+        ),
+        leading: Icon(
+          Icons.account_circle,
+          size: 48,
+        ),
+        title: 'text with image link',
+        subtitle:
+            "Hi its my testing <b>Laila</b> <b>https://www.kasandbox.org/programming-images/avatars/spunky-sam.png</b>",
+        documentId: 0),
     NotificationCard(
-      date: DateTime.now().subtract(
-        const Duration(minutes: 4),
-      ),
-      leading: Icon(
-        Icons.account_circle,
-        size: 48,
-      ),
-      title: 'image link',
-      subtitle:
-          "https://www.kasandbox.org/programming-images/avatars/spunky-sam.png",
-    ),
+        date: DateTime.now().subtract(
+          const Duration(minutes: 4),
+        ),
+        leading: Icon(
+          Icons.account_circle,
+          size: 48,
+        ),
+        title: 'image link',
+        subtitle:
+            "https://www.kasandbox.org/programming-images/avatars/spunky-sam.png",
+        documentId: 0),
     NotificationCard(
-      date: DateTime.now().subtract(
-        const Duration(minutes: 4),
-      ),
-      leading: Icon(
-        Icons.account_circle,
-        size: 48,
-      ),
-      title: 'text with image link',
-      subtitle:
-          "Hi its my testing <b>Laila</b> https://www.kasandbox.org/programming-images/avatars/spunky-sam.png",
-    ),
+        date: DateTime.now().subtract(
+          const Duration(minutes: 4),
+        ),
+        leading: Icon(
+          Icons.account_circle,
+          size: 48,
+        ),
+        title: 'text with image link',
+        subtitle:
+            "Hi its my testing <b>Laila</b> https://www.kasandbox.org/programming-images/avatars/spunky-sam.png",
+        documentId: 0),
     NotificationCard(
-      date: DateTime.now().subtract(
-        const Duration(minutes: 10),
-      ),
-      leading: Icon(
-        Icons.account_circle,
-        size: 48,
-      ),
-      title: 'OakTree 3',
-      subtitle:
-          'hi all it is nooo https://sample-videos.com/img/Sample-png-image-1mb.png</p>',
-    ),
+        date: DateTime.now().subtract(
+          const Duration(minutes: 10),
+        ),
+        leading: Icon(
+          Icons.account_circle,
+          size: 48,
+        ),
+        title: 'OakTree 3',
+        subtitle:
+            'hi all it is nooo https://sample-videos.com/img/Sample-png-image-1mb.png</p>',
+        documentId: 0),
     NotificationCard(
-      date: DateTime.now().subtract(
-        const Duration(minutes: 10),
-      ),
-      leading: Icon(
-        Icons.account_circle,
-        size: 48,
-      ),
-      title: 'OakTree 8',
-      subtitle: 'test <b>https://en.wikipedia.org/wiki/Cat#/media/File:Cat_August_2010-4.jpg</b>',
-    ),
+        date: DateTime.now().subtract(
+          const Duration(minutes: 10),
+        ),
+        leading: Icon(
+          Icons.account_circle,
+          size: 48,
+        ),
+        title: 'OakTree 8',
+        // subtitle: 'test <b>https://en.wikipedia.org/wiki/Cat#/media/File:Cat_August_2010-4.jpg</b>',
+        subtitle:
+            '<b>https://en.wikipedia.org/wiki/Cat#/media/File:Cat_August_2010-4.jpg</b>',
+        documentId: 0),
     NotificationCard(
-      date: DateTime.now().subtract(
-        const Duration(minutes: 30),
-      ),
-      leading: Icon(
-        Icons.account_circle,
-        size: 48,
-      ),
-      title: 'OakTree 4',
-      subtitle: 'We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.',
-    ),
+        date: DateTime.now().subtract(
+          const Duration(minutes: 30),
+        ),
+        leading: Icon(
+          Icons.account_circle,
+          size: 48,
+        ),
+        title: 'OakTree 4',
+        subtitle:
+            'We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.We believe in the power of mobile computing.',
+        documentId: 0),
     NotificationCard(
-      date: DateTime.now().subtract(
-        const Duration(minutes: 44),
-      ),
-      leading: Icon(
-        Icons.account_circle,
-        size: 48,
-      ),
-      title: 'OakTree 5',
-      subtitle: 'We believe in the power of mobile computing.\n\n\n\n\n https://upload.wikimedia.org',
-    ),
+        date: DateTime.now().subtract(
+          const Duration(minutes: 44),
+        ),
+        leading: Icon(
+          Icons.account_circle,
+          size: 48,
+        ),
+        title: 'OakTree 5',
+        subtitle:
+            'We believe in the power of mobile computing.\n\n\n\n\n https://upload.wikimedia.org',
+        documentId: 0),
     NotificationCard(
-      date: DateTime.now().subtract(
-        const Duration(minutes: 4),
-      ),
-      leading: Icon(
-        Icons.account_circle,
-        size: 48,
-      ),
-      title: 'text with image link',
-      subtitle:
-          "Hi its my testing <b>Laila</b> https://www.kasandbox.org/programming-images/avatars/spunky-sam.png",
-    ),
+        date: DateTime.now().subtract(
+          const Duration(minutes: 4),
+        ),
+        leading: Icon(
+          Icons.account_circle,
+          size: 48,
+        ),
+        title: 'text with image link',
+        subtitle:
+            "Hi its my testing <b>Laila</b> https://www.kasandbox.org/programming-images/avatars/spunky-sam.png",
+        documentId: 0),
   ];
 
   @override
