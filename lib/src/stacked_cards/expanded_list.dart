@@ -202,165 +202,169 @@ class _ExpandedListState extends State<ExpandedList> {
                   tilePadding: widget.tilePadding,
                   title: notification.title,
                   child: GestureDetector(
+                    // onTap: () {
+                    //   notification.title == "The latest communications!"
+                    //       ? launchUrl(Uri.parse(
+                    //           "https://www.medpluspr.com/comunicadosmedlink"))
+                    //       : notification.title ==
+                    //               "Las comunicaciones más recientes!"
+                    //           ? launchUrl(Uri.parse(
+                    //               "https://www.medpluspr.com/medlinknews"))
+                    //           : showDialog(
+                    //               context: context,
+                    //               builder: ((BuildContext context) {
+                    //                 return AlertDialog(
+                    //                   iconPadding: EdgeInsets.zero,
+                    //                   //alignment: Alignment.center,
+                    //                   icon: Column(
+                    //                     mainAxisAlignment:
+                    //                         MainAxisAlignment.start,
+                    //                     crossAxisAlignment:
+                    //                         CrossAxisAlignment.center,
+                    //                     children: [
+                    //                       Container(
+                    //                         alignment: Alignment.topRight,
+                    //                         child: IconButton(
+                    //                             onPressed: () {
+                    //                               Navigator.pop(context);
+                    //                             },
+                    //                             icon: Icon(Icons.close)),
+                    //                       ),
+                    //                       notification.leading,
+                    //                     ],
+                    //                   ),
+                    //                   iconColor: Theme.of(context)
+                    //                       .bottomNavigationBarTheme
+                    //                       .selectedItemColor,
+                    //                   title: Text(notification.title),
+                    //                   content: SingleChildScrollView(
+                    //                     child: isImage == true
+                    //                         ? Column(
+                    //                             children: [
+                    //                               extractText(notification
+                    //                                           .subtitle) ==
+                    //                                       null
+                    //                                   ? SizedBox()
+                    //                                   : Container(
+                    //                                       width: MediaQuery.of(
+                    //                                                   context)
+                    //                                               .size
+                    //                                               .width *
+                    //                                           0.8,
+                    //                                       height: MediaQuery.of(
+                    //                                                   context)
+                    //                                               .size
+                    //                                               .height *
+                    //                                           0.1,
+                    //                                       child: Scrollbar(
+                    //                                         thumbVisibility:
+                    //                                             true,
+                    //                                         child:
+                    //                                             SingleChildScrollView(
+                    //                                           child: Html(
+                    //                                             data: extractText(
+                    //                                                     notification
+                    //                                                         .subtitle) ??
+                    //                                                 "",
+                    //                                           ),
+                    //                                         ),
+                    //                                       ),
+                    //                                     ),
+                    //                               imageValue(
+                    //                                   notification, context),
+                    //                             ],
+                    //                           )
+                    //                         : isURL == true
+                    //                             ? Column(
+                    //                                 children: [
+                    //                                   // extractText(notification
+                    //                                   //             .subtitle) ==
+                    //                                   //         null
+                    //                                   //     ? SizedBox()
+                    //                                   //     :
+                    //                                   // Container(
+                    //                                   //   width: MediaQuery.of(
+                    //                                   //               context)
+                    //                                   //           .size
+                    //                                   //           .width *
+                    //                                   //       0.8,
+                    //                                   //   height: MediaQuery.of(
+                    //                                   //               context)
+                    //                                   //           .size
+                    //                                   //           .height *
+                    //                                   //       0.1,
+                    //                                   //   child:
+                    //                                   //       SingleChildScrollView(
+                    //                                   //     child: Html(
+                    //                                   //       data: extractText(
+                    //                                   //               notification
+                    //                                   //                   .subtitle) ??
+                    //                                   //           "",
+                    //                                   //     ),
+                    //                                   //   ),
+                    //                                   // ),
+                    //                                   InkWell(
+                    //                                     child: Container(
+                    //                                       width: MediaQuery.of(
+                    //                                                   context)
+                    //                                               .size
+                    //                                               .width *
+                    //                                           0.8,
+                    //                                       height: MediaQuery.of(
+                    //                                                   context)
+                    //                                               .size
+                    //                                               .height *
+                    //                                           0.1,
+                    //                                       child: Scrollbar(
+                    //                                         thumbVisibility:
+                    //                                             true,
+                    //                                         child:
+                    //                                             SingleChildScrollView(
+                    //                                           child: Html(
+                    //                                             data: notification
+                    //                                                 .subtitle,
+                    //                                           ),
+                    //                                         ),
+                    //                                       ),
+                    //                                     ),
+                    //                                     onTap: () {
+                    //                                       launchUrl(Uri.parse(
+                    //                                           extractURL(
+                    //                                               notification
+                    //                                                   .subtitle)!));
+                    //                                     },
+                    //                                   ),
+                    //                                 ],
+                    //                               )
+                    //                             : Container(
+                    //                                 width:
+                    //                                     MediaQuery.of(context)
+                    //                                             .size
+                    //                                             .width *
+                    //                                         0.8,
+                    //                                 height:
+                    //                                     MediaQuery.of(context)
+                    //                                             .size
+                    //                                             .height *
+                    //                                         0.1,
+                    //                                 child: Scrollbar(
+                    //                                   thumbVisibility: true,
+                    //                                   child:
+                    //                                       SingleChildScrollView(
+                    //                                     child: Html(
+                    //                                       data: notification
+                    //                                           .subtitle,
+                    //                                     ),
+                    //                                   ),
+                    //                                 ),
+                    //                               ),
+                    //                   ),
+                    //                 );
+                    //               }));
+                    // },
+
                     onTap: () {
-                      notification.title == "The latest communications!"
-                          ? launchUrl(Uri.parse(
-                              "https://www.medpluspr.com/comunicadosmedlink"))
-                          : notification.title ==
-                                  "Las comunicaciones más recientes!"
-                              ? launchUrl(Uri.parse(
-                                  "https://www.medpluspr.com/medlinknews"))
-                              : showDialog(
-                                  context: context,
-                                  builder: ((BuildContext context) {
-                                    return AlertDialog(
-                                      iconPadding: EdgeInsets.zero,
-                                      //alignment: Alignment.center,
-                                      icon: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            alignment: Alignment.topRight,
-                                            child: IconButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                icon: Icon(Icons.close)),
-                                          ),
-                                          notification.leading,
-                                        ],
-                                      ),
-                                      iconColor: Theme.of(context)
-                                          .bottomNavigationBarTheme
-                                          .selectedItemColor,
-                                      title: Text(notification.title),
-                                      content: SingleChildScrollView(
-                                        child: isImage == true
-                                            ? Column(
-                                                children: [
-                                                  extractText(notification
-                                                              .subtitle) ==
-                                                          null
-                                                      ? SizedBox()
-                                                      : Container(
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.8,
-                                                          height: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .height *
-                                                              0.1,
-                                                          child: Scrollbar(
-                                                            thumbVisibility:
-                                                                true,
-                                                            child:
-                                                                SingleChildScrollView(
-                                                              child: Html(
-                                                                data: extractText(
-                                                                        notification
-                                                                            .subtitle) ??
-                                                                    "",
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                  imageValue(
-                                                      notification, context),
-                                                ],
-                                              )
-                                            : isURL == true
-                                                ? Column(
-                                                    children: [
-                                                      // extractText(notification
-                                                      //             .subtitle) ==
-                                                      //         null
-                                                      //     ? SizedBox()
-                                                      //     :
-                                                      // Container(
-                                                      //   width: MediaQuery.of(
-                                                      //               context)
-                                                      //           .size
-                                                      //           .width *
-                                                      //       0.8,
-                                                      //   height: MediaQuery.of(
-                                                      //               context)
-                                                      //           .size
-                                                      //           .height *
-                                                      //       0.1,
-                                                      //   child:
-                                                      //       SingleChildScrollView(
-                                                      //     child: Html(
-                                                      //       data: extractText(
-                                                      //               notification
-                                                      //                   .subtitle) ??
-                                                      //           "",
-                                                      //     ),
-                                                      //   ),
-                                                      // ),
-                                                      InkWell(
-                                                        child: Container(
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.8,
-                                                          height: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .height *
-                                                              0.1,
-                                                          child: Scrollbar(
-                                                            thumbVisibility:
-                                                                true,
-                                                            child:
-                                                                SingleChildScrollView(
-                                                              child: Html(
-                                                                data: notification
-                                                                    .subtitle,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        onTap: () {
-                                                          launchUrl(Uri.parse(
-                                                              extractURL(
-                                                                  notification
-                                                                      .subtitle)!));
-                                                        },
-                                                      ),
-                                                    ],
-                                                  )
-                                                : Container(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            0.8,
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height *
-                                                            0.1,
-                                                    child: Scrollbar(
-                                                      thumbVisibility: true,
-                                                      child:
-                                                          SingleChildScrollView(
-                                                        child: Html(
-                                                          data: notification
-                                                              .subtitle,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                      ),
-                                    );
-                                  }));
+                      widget.onTapViewCallback(index);
                     },
                     child: NotificationTile(
                       cardTitle: widget.notificationCardTitle,

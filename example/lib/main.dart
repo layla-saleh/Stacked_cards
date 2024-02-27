@@ -176,7 +176,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   _listOfNotification.removeAt(index);
                 });
               },
-              onTapViewCallback: (index) {},
+              onTapViewCallback: (index) {
+                showDialog(
+                    context: context,
+                    builder: ((BuildContext context) {
+                      return AlertDialog(
+                          iconPadding: EdgeInsets.zero,
+                          iconColor: Theme.of(context)
+                              .bottomNavigationBarTheme
+                              .selectedItemColor,
+                          title: Text("test success"),
+                          content: Text("data"));
+                    }));
+              },
             ),
           ],
         ),
