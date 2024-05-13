@@ -116,7 +116,7 @@ class LastNotificationCard extends StatelessWidget {
                     ),
                     subtitle: SingleChildScrollView(
                       child: Container(
-                        height: MediaQuery.of(context).size.height * 0.05,
+                        height: MediaQuery.of(context).size.height *0.04,
                         child: Html(
                           data: notification.subtitle,
                           style: {

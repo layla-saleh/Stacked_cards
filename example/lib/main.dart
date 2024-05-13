@@ -37,6 +37,18 @@ class _MyHomePageState extends State<MyHomePage> {
         subtitle:
             "Hi its my testing <b>Laila</b> <b>https://www.kasandbox.org/programming-images/avatars/spunky-sam.png</b>",
         documentId: 0),
+         NotificationCard(
+        date: DateTime.now().subtract(
+          const Duration(minutes: 4),
+        ),
+        leading: Icon(
+          Icons.account_circle,
+          size: 48,
+        ),
+        title: 'KRA - Robot Daily, Weekly and Monthly Tasks',
+        subtitle:
+            "New Document added by yquinones MEDPLUS NURSING HOME MEDPLUS EMP & FAMILY",
+        documentId: 0),
     NotificationCard(
         date: DateTime.now().subtract(
           const Duration(minutes: 4),
